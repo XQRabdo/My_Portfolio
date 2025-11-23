@@ -1,0 +1,475 @@
+<!--
+  Ultra-professional Dark Portfolio
+  Author: Generated for Abderrahman Zerdouba
+  Notes: Single-file HTML using Tailwind CDN + GSAP for animations.
+  Replace placeholder assets / links with your own (images, CV PDF, social links).
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Abderrahman Zerdouba — Front-End Developer portfolio" />
+  <title>Abderrahman Zerdouba — Front-End Developer</title>
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN (for quick prototyping). For production: build Tailwind and purge unused styles. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config override for neon palette
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5e9',
+            "primary-600": '#0284c7',
+            bg: '#0b1220',
+            card: '#0f1724',
+            glass: 'rgba(255,255,255,0.04)'
+          },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP for smooth animations + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <style>
+    /* Extra small custom styles for neon/glass effects */
+    :root { color-scheme: dark; }
+    html,body { height:100%; }
+    body { background: radial-gradient(1200px 600px at 10% 10%, rgba(14,165,233,0.06), transparent), radial-gradient(900px 500px at 90% 90%, rgba(14,165,233,0.04), transparent), #071024; }
+    .neon { text-shadow: 0 2px 12px rgba(14,165,233,0.12), 0 0 24px rgba(14,165,233,0.06); }
+    .glass { background: rgba(255,255,255,0.02); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.04); }
+    .card-3d { transform-style: preserve-3d; transition: transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .45s; }
+    .card-3d:before { content: ''; position:absolute; inset:0; pointer-events:none; border-radius: 14px; background: linear-gradient(135deg, rgba(14,165,233,0.04), transparent); mix-blend-mode: overlay; }
+    /* accessible focus outline */
+    a:focus, button:focus, input:focus, textarea:focus { outline: 3px solid rgba(14,165,233,0.14); outline-offset: 3px; }
+
+    /* small helper for project image ratio */
+    .ratio-16-9 { position: relative; padding-top: 56.25%; }
+    .ratio-16-9 img { position: absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius: 8px; }
+  </style>
+</head>
+<body class="text-slate-200 leading-relaxed antialiased font-sans">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-6 md:px-12">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between glass rounded-2xl p-3 shadow-lg">
+      <a href="#home" class="flex items-center gap-3" aria-label="Home">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-600 flex items-center justify-center text-black font-extrabold">AZ</div>
+        <div class="hidden sm:block">
+          <div class="text-sm font-semibold">Abderrahman Zerdouba</div>
+          <div class="text-xs text-slate-400">Front-End Developer</div>
+        </div>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-6 text-sm">
+        <li><a class="hover:text-primary" href="#projects">Projects</a></li>
+        <li><a class="hover:text-primary" href="#skills">Skills</a></li>
+        <li><a class="hover:text-primary" href="#services">Services</a></li>
+        <li><a class="hover:text-primary" href="#testimonials">Testimonials</a></li>
+        <li><a class="hover:text-primary" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-black font-medium shadow-sm hover:scale-105 transition">Hire me</a>
+        <a href="Abderrahman Zerdouba — Resume.pdf" download class="text-xs text-slate-300 hover:text-primary">Download CV</a>
+        <!-- mobile menu button -->
+        <button id="mobileBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-800/40" aria-label="Open menu">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-28">
+
+    <!-- HERO -->
+    <section id="home" class="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-32 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1">
+        <h1 class="text-4xl md:text-6xl font-extrabold neon">Hi, I'm <span class="text-primary">Abderrahman</span>.</h1>
+        <p class="mt-4 text-lg text-slate-300 max-w-xl">I build interactive, accessible and high-performance front-end experiences — with a focus on modern UI, animations and pixel-perfect implementation for products that scale.</p>
+
+        <div class="mt-8 flex gap-4">
+          <a href="#projects" class="inline-flex items-center gap-3 px-6 py-3 rounded-lg bg-primary text-black font-semibold shadow-lg transform transition hover:-translate-y-1">View my work</a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-slate-700 text-slate-200 hover:text-primary">Contact me</a>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-md">
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-2xl font-bold">1+</div>
+            <div class="text-xs text-slate-400">Years experience</div>
+          </div>
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-2xl font-bold">2+</div>
+            <div class="text-xs text-slate-400">Projects shipped</div>
+          </div>
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-2xl font-bold">React</div>
+            <div class="text-xs text-slate-400">Primary stack</div>
+          </div>
+          <div class="glass p-3 rounded-lg text-center">
+            <div class="text-2xl font-bold">UI</div>
+            <div class="text-xs text-slate-400">Design focused</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- hero visual / profile card -->
+      <div class="flex-1 max-w-md w-full">
+        <div id="heroCard" class="card-3d relative glass rounded-2xl p-6 shadow-xl" style="min-height:320px;">
+          <div class="absolute -top-10 -right-6 w-44 h-44 rounded-full bg-gradient-to-br from-primary/30 to-primary-600/20 blur-3xl"></div>
+          <div class="flex items-center gap-4">
+            <div class="w-20 h-20 rounded-xl overflow-hidden bg-slate-800">
+              <img src="rr.jpg" alt="profile" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <div class="text-lg font-semibold">Abderrahman Zerdouba</div>
+              <div class="text-sm text-slate-400">Front-End Developer</div>
+              <div class="text-xs text-slate-400 mt-1">Algeria • +213558336286 • <a href="mailto:abderrahmanzerdouba@gmail.com" class="text-primary">Email me</a></div>
+            </div>
+          </div>
+
+          <div class="mt-6 text-slate-300 text-sm">
+            <p>I'm passionate about turning complex problems into intuitive, accessible, and delightful user interfaces. I focus on performance, accessibility, and smooth animations.</p>
+          </div>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#contact" class="px-4 py-2 rounded-lg bg-primary text-black font-medium">Let's talk</a>
+            <a href="/assets/Abderrahman_Zerdouba_CV.pdf" download class="px-3 py-2 rounded-lg border border-slate-700">Download CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <h2 class="text-3xl font-bold mb-6 neon">Selected Projects</h2>
+      <p class="text-slate-400 mb-8">A curated selection of projects demonstrating design, animation and responsive delivery.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Project card (repeat) -->
+        <article class="relative group card-3d glass rounded-xl p-4 overflow-hidden" tabindex="0" aria-label="Project: Modern Dashboard">
+          <div class="ratio-16-9 rounded-md overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1523473827532-8df7c3f2e33f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project screenshot">
+          </div>
+          <div class="mt-4">
+            <h3 class="text-xl font-semibold neon">Modern Dashboard</h3>
+            <p class="text-slate-400 text-sm mt-1">Interactive admin dashboard with charts, real-time updates and responsive layout.</p>
+          </div>
+
+          <div class="absolute inset-0 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+              <div class="text-white text-sm">React • Tailwind • D3</div>
+              <div class="flex gap-2">
+                <a href="#" class="bg-white/6 px-3 py-2 rounded-md text-xs">Live</a>
+                <a href="#" class="bg-white/6 px-3 py-2 rounded-md text-xs">Code</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="group card-3d glass rounded-xl p-4 overflow-hidden" tabindex="0" aria-label="Project: Landing Page">
+          <div class="ratio-16-9 rounded-md overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Landing screenshot">
+          </div>
+          <div class="mt-4">
+            <h3 class="text-xl font-semibold neon">Product Landing</h3>
+            <p class="text-slate-400 text-sm mt-1">Pixel-perfect responsive landing page with marketing conversion focus.</p>
+          </div>
+        </article>
+
+        <article class="group card-3d glass rounded-xl p-4 overflow-hidden" tabindex="0" aria-label="Project: E-commerce UI">
+          <div class="ratio-16-9 rounded-md overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="E-commerce screenshot">
+          </div>
+          <div class="mt-4">
+            <h3 class="text-xl font-semibold neon">E-commerce UI</h3>
+            <p class="text-slate-400 text-sm mt-1">Accessible product browsing with fast and enjoyable UX.</p>
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <h2 class="text-3xl font-bold neon">Skills</h2>
+      <p class="text-slate-400 mb-6">Interactive skill set. Click a skill to view depth.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold mb-4">Frontend</h3>
+          <ul class="space-y-3">
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="90">HTML — <span class="text-slate-400">Advanced</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="88">CSS — <span class="text-slate-400">Advanced</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="92">JavaScript — <span class="text-slate-400">Advanced</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="85">React — <span class="text-slate-400">Advanced</span></li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold mb-4">Tools & Styling</h3>
+          <ul class="space-y-3">
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="80">Tailwind — <span class="text-slate-400">Proficient</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="70">SASS — <span class="text-slate-400">Comfortable</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="70">Figma — <span class="text-slate-400">Comfortable</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="65">Testing — <span class="text-slate-400">Unit/Integration</span></li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold mb-4">Other</h3>
+          <ul class="space-y-3">
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="60">Accessibility — <span class="text-slate-400">Good</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="75">Performance — <span class="text-slate-400">Proficient</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="55">Node.js — <span class="text-slate-400">Working</span></li>
+            <li class="skill cursor-pointer p-3 rounded-md bg-slate-900/20" data-level="50">Design Systems — <span class="text-slate-400">Familiar</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="skillMeter" class="mt-8 hidden glass rounded-xl p-6">
+        <div class="flex items-center justify-between">
+          <div class="text-sm font-medium">Skill depth</div>
+          <div id="skillPercent" class="text-sm text-slate-400">0%</div>
+        </div>
+        <div class="mt-4 bg-slate-900 rounded-full h-3 overflow-hidden">
+          <div id="skillBar" class="h-3 rounded-full bg-primary w-0"></div>
+        </div>
+        <div id="skillName" class="mt-3 text-sm text-slate-300"></div>
+      </div>
+
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <h2 class="text-3xl font-bold neon">Services</h2>
+      <p class="text-slate-400 mb-8">What I deliver for product teams and startups.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass rounded-xl p-6 hover:scale-105 transition">
+          <div class="text-2xl font-semibold">UI Implementation</div>
+          <p class="text-slate-400 mt-3">Pixel-perfect conversion of Figma/Sketch into responsive code.</p>
+        </div>
+        <div class="glass rounded-xl p-6 hover:scale-105 transition">
+          <div class="text-2xl font-semibold">Animations & Microinteractions</div>
+          <p class="text-slate-400 mt-3">Meaningful animations using GSAP/Framer Motion for delightful UX.</p>
+        </div>
+        <div class="glass rounded-xl p-6 hover:scale-105 transition">
+          <div class="text-2xl font-semibold">Performance & Accessibility</div>
+          <p class="text-slate-400 mt-3">Fast, accessible experiences with real front-end optimizations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <h2 class="text-3xl font-bold neon">Testimonials</h2>
+      <p class="text-slate-400 mb-8">Few words from people I've worked with.</p>
+
+      <div id="testiWrap" class="glass rounded-xl p-6">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="flex-1">
+            <p class="text-slate-200 italic">"Abderrahman took our product UI from concept to delightful reality. Attention to detail and speed were outstanding."</p>
+            <div class="mt-4 text-sm text-slate-400">— Product Manager, Acme Co.</div>
+          </div>
+          <div class="w-48 flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Client" class="rounded-lg w-full h-28 object-cover">
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 md:px-12 py-16">
+      <h2 class="text-3xl font-bold neon">Contact</h2>
+      <p class="text-slate-400 mb-8">Interested in working together? Send a message or reach out via socials.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form id="contactForm" class="glass rounded-xl p-6 space-y-4" onsubmit="return submitForm(event)">
+          <label class="block">
+            <span class="text-sm text-slate-300">Your name</span>
+            <input required name="name" class="mt-2 block w-full rounded-md bg-transparent border border-slate-700 px-3 py-2" placeholder="John Doe">
+          </label>
+          <label class="block">
+            <span class="text-sm text-slate-300">Email</span>
+            <input required type="email" name="email" class="mt-2 block w-full rounded-md bg-transparent border border-slate-700 px-3 py-2" placeholder="you@company.com">
+          </label>
+          <label class="block">
+            <span class="text-sm text-slate-300">Message</span>
+            <textarea required name="message" rows="4" class="mt-2 block w-full rounded-md bg-transparent border border-slate-700 px-3 py-2" placeholder="Brief about the project..."></textarea>
+          </label>
+
+          <div class="flex items-center gap-3">
+            <button class="px-4 py-2 rounded-lg bg-primary text-black font-semibold">Send message</button>
+            <button type="button" onclick="mailtoFallback()" class="px-3 py-2 rounded-lg border border-slate-700">Email me</button>
+          </div>
+
+          <div id="contactStatus" class="text-sm text-slate-300"></div>
+        </form>
+
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-semibold">Socials</h3>
+          <ul class="mt-4 space-y-2 text-slate-300">
+            <li><a href="https://github.com/XQRabdo" class="hover:text-primary">GitHub</a></li>
+            <li><a href="https://www.facebook.com/share/17bCxi2W3A/" class="hover:text-primary">Facebook</a></li>
+            <li><a href="https://www.instagram.com/abderahman_zerdouba?igsh=aTk3NnNiaXE5aDQw" class="hover:text-primary">Instagram</a></li>
+          </ul>
+
+          <div class="mt-8">
+            <h4 class="text-sm text-slate-400">Location</h4>
+            <div class="text-slate-200">Algeria</div>
+          </div>
+
+          <div class="mt-8">
+            <h4 class="text-sm text-slate-400">Availability</h4>
+            <div class="text-slate-200">Open for freelance & full-time roles</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="py-8 mt-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 md:px-12 text-center text-sm text-slate-400">© <span id="year"></span> Abderrahman Zerdouba — Built with care.</div>
+  </footer>
+
+  <!-- Scripts: interactions and GSAP initializations -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle (simple)
+    const mobileBtn = document.getElementById('mobileBtn');
+    mobileBtn.addEventListener('click', ()=> {
+      alert('Mobile menu placeholder — integrate your mobile nav here.');
+    });
+
+    // Hero card 3D parallax
+    const heroCard = document.getElementById('heroCard');
+    if (heroCard) {
+      heroCard.addEventListener('mousemove', (e)=>{
+        const rect = heroCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) - rect.width/2;
+        const y = (e.clientY - rect.top) - rect.height/2;
+        heroCard.style.transform = `perspective(900px) rotateY(${x/25}deg) rotateX(${ -y/25 }deg) translateZ(0)`;
+      });
+      heroCard.addEventListener('mouseleave', ()=>{
+        heroCard.style.transform = '';
+      });
+    }
+
+    // Project card hover depth effect
+    document.querySelectorAll('.group.card-3d').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) - rect.width/2;
+        const y = (e.clientY - rect.top) - rect.height/2;
+        card.style.transform = `translateZ(0) perspective(700px) rotateY(${x/40}deg) rotateX(${ -y/40 }deg)`;
+        card.style.boxShadow = `${-x/40}px ${y/40}px 30px rgba(2,132,199,0.12)`;
+      });
+      card.addEventListener('mouseleave', ()=>{
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+    });
+
+    // Skills interactivity
+    const skills = document.querySelectorAll('.skill');
+    const meter = document.getElementById('skillMeter');
+    const skillBar = document.getElementById('skillBar');
+    const skillPercent = document.getElementById('skillPercent');
+    const skillName = document.getElementById('skillName');
+
+    skills.forEach(s => s.addEventListener('click', ()=>{
+      const level = Number(s.getAttribute('data-level'));
+      const text = s.textContent.trim();
+      meter.classList.remove('hidden');
+      skillBar.style.width = '0%';
+      skillName.textContent = text;
+      skillPercent.textContent = level + '%';
+      // animate width
+      requestAnimationFrame(()=>{
+        skillBar.style.transition = 'width 800ms cubic-bezier(.2,.9,.3,1)';
+        skillBar.style.width = level + '%';
+      });
+      setTimeout(()=>{
+        skillBar.style.transition = '';
+      }, 900);
+    }));
+
+    // Basic testimonial rotation (simple example ready to expand)
+    let testiIndex = 0;
+    const testiWrap = document.getElementById('testiWrap');
+    setInterval(()=>{
+      testiIndex = (testiIndex + 1) % 3;
+      // minimal rotation effect (for demo, replace with real testimonials array)
+      testiWrap.style.transform = `translateY(${ -testiIndex * 0 }px)`;
+    }, 6000);
+
+    // Contact form: simple mailto fallback. For production, wire EmailJS or server endpoint.
+    function mailtoFallback() {
+      window.location.href = 'mailto:abderrahman.zerdouba@example.com';
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const name = data.get('name');
+      const email = data.get('email');
+      const message = data.get('message');
+
+      // Basic validation already enforced by required attributes.
+      // In production: POST to your API or use EmailJS. Here we use a mailto fallback for recruiters.
+      const subject = encodeURIComponent('Portfolio message from ' + name);
+      const body = encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+${message}`);
+      const mailto = `mailto:abderrahman.zerdouba@example.com?subject=${subject}&body=${body}`;
+      // Open mail client
+      window.location.href = mailto;
+
+      const status = document.getElementById('contactStatus');
+      status.textContent = 'Opened your mail client. If it did not open, please email directly to abderrahman.zerdouba@example.com';
+      return false;
+    }
+
+    // GSAP scroll reveals
+    window.addEventListener('load', ()=>{
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('section').forEach(sec => {
+          gsap.from(sec, {
+            opacity: 0, y: 40, duration: 0.9, ease: 'power3.out',
+            scrollTrigger: { trigger: sec, start: 'top 85%' }
+          });
+        });
+
+        gsap.utils.toArray('.card-3d').forEach((el, i)=>{
+          gsap.from(el, { y: 20, opacity: 0, duration: 0.8, delay: i*0.08, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+        });
+      }
+    });
+
+    // Accessibility: reduce motion respect
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (media.matches) {
+      document.documentElement.classList.add('reduced-motion');
+    }
+
+  </script>
+
+</body>
+</html>
